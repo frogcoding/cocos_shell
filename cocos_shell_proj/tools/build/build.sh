@@ -44,7 +44,7 @@ echo "version:$your_version"
 case $your_target in
 	web)
 		echo 'your target is web'
-		/Applications/CocosCreator_2.app/Contents/MacOS/CocosCreator --path './../../' --build "platform=web-mobile;${your_debug};"
+		/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path './../../' --build "platform=web-mobile;${your_debug};"
 		gulp  -f build_web_gulpfile.js
 		cd './../../build'
 		zip -r "./web_${your_game_name}_${your_version}"  './web-mobile' 
@@ -52,7 +52,7 @@ case $your_target in
 		;;
 	fb)
 		echo 'your target is fb'
-		/Applications/CocosCreator_2.app/Contents/MacOS/CocosCreator --path './../../' --build "platform=fb-instant-games;${your_debug};md5Cache=false"
+		/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path './../../' --build "platform=fb-instant-games;${your_debug};md5Cache=false"
 		gulp  -f build_fb_gulpfile.js
 		cd './../../build'
 		zip -r "./fb_${your_game_name}_${your_version}"  './fb-instant-games' 
