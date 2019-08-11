@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "e74056cd-eece-4d23-b307-3405bdbf195e",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "Mario": {
+      "ver": "1.0.3",
+      "uuid": "fe323777-b1ce-44b9-8281-8e576327dde5",
+      "rawTextureUuid": "e74056cd-eece-4d23-b307-3405bdbf195e",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 128,
+      "height": 128,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

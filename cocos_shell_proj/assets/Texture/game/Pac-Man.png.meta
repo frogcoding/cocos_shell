@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "7f783cb2-dec3-46c5-948b-f9213220a685",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "Pac-Man": {
+      "ver": "1.0.3",
+      "uuid": "93305697-b589-4376-b105-6e9f61fa45f8",
+      "rawTextureUuid": "7f783cb2-dec3-46c5-948b-f9213220a685",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 128,
+      "height": 128,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}

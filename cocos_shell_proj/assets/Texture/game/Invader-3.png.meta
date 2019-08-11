@@ -1,0 +1,31 @@
+{
+  "ver": "2.2.0",
+  "uuid": "04656fab-cb93-4184-a187-af4b711b6c87",
+  "type": "sprite",
+  "wrapMode": "clamp",
+  "filterMode": "bilinear",
+  "premultiplyAlpha": false,
+  "subMetas": {
+    "Invader-3": {
+      "ver": "1.0.3",
+      "uuid": "ae16f8c2-ac0c-441a-a2da-5e6636ffdfa9",
+      "rawTextureUuid": "04656fab-cb93-4184-a187-af4b711b6c87",
+      "trimType": "custom",
+      "trimThreshold": 1,
+      "rotated": false,
+      "offsetX": 0,
+      "offsetY": 0,
+      "trimX": 0,
+      "trimY": 0,
+      "width": 128,
+      "height": 128,
+      "rawWidth": 128,
+      "rawHeight": 128,
+      "borderTop": 0,
+      "borderBottom": 0,
+      "borderLeft": 0,
+      "borderRight": 0,
+      "subMetas": {}
+    }
+  }
+}
