@@ -1,0 +1,90 @@
+{
+    "web": {
+        "texture": {
+            "assets/Texture/common": {
+                "speed": 4,
+                "quality": [
+                    0.2,
+                    0.3
+                ]
+            },
+            "assets/Texture/menu": {
+                "speed": 8,
+                "quality": [
+                    0.2,
+                    0.3
+                ]
+            },
+            "assets/Texture/game": {
+                "speed": 4,
+                "quality": [
+                    0.18,
+                    0.2
+                ],
+                "dithering": 0.5
+            }
+        },
+        "javascript-obfuscator-options": {
+            "compact": true,
+            "controlFlowFlattening": true,
+            "controlFlowFlatteningThreshold": 0.3,
+            "deadCodeInjection": true,
+            "deadCodeInjectionThreshold": 0.05,
+            "identifierNamesGenerator": "hexadecimal",
+            "rotateStringArray": true,
+            "selfDefending": true,
+            "stringArray": true,
+            "stringArrayEncoding": "rc4",
+            "stringArrayThreshold": 0.5,
+            "seed": 7777,
+            "debugProtection": true,
+            "debugProtectionInterval": true,
+            "disableConsoleOutput": true,
+            "log": false
+        }
+    },
+    "fb": {
+        "texture": {
+            "assets/Texture/common": {
+                "speed":7,
+                "quality": [
+                    0.2,
+                    0.3
+                ]
+            },
+            "assets/Texture/menu": {
+                "speed": 9,
+                "quality": [
+                    0.2,
+                    0.3
+                ]
+            },
+            "assets/Texture/game": {
+                "speed": 7,
+                "quality": [
+                    0.18,
+                    0.2
+                ],
+                "dithering": 0.5
+            }
+        },
+        "javascript-obfuscator-options": {
+            "compact": true,
+            "controlFlowFlattening": true,
+            "controlFlowFlatteningThreshold": 0.2,
+            "deadCodeInjection": true,
+            "deadCodeInjectionThreshold": 0.05,
+            "identifierNamesGenerator": "hexadecimal",
+            "rotateStringArray": true,
+            "selfDefending": true,
+            "stringArray": true,
+            "stringArrayEncoding": "rc4",
+            "stringArrayThreshold": 0.3,
+            "seed": 66666,
+            "debugProtection": true,
+            "debugProtectionInterval": true,
+            "disableConsoleOutput": true,
+            "log": false
+        }
+    }
+}

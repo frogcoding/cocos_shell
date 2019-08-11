@@ -1,0 +1,18 @@
+{
+  "name": "build",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "lamyoung",
+  "license": "ISC",
+  "devDependencies": {
+    "del": "^5.0.0",
+    "gulp": "^4.0.2",
+    "gulp-imagemin": "^6.0.0",
+    "gulp-javascript-obfuscator": "^1.1.6",
+    "imagemin-pngquant": "^8.0.0",
+    "vinyl-sourcemaps-apply": "^0.2.1"
+  }
+}
