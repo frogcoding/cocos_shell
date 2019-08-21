@@ -24,8 +24,5 @@ $ npm i
 $ ./build.sh -t web
 ```
 
-# 不重要的东西
-如果有帮助，随意打赏
-
-![wechatPay](./img/wechatPay.jpg)
-![aliPay](./img/aliPay.jpg)
+# 微信公众号
+![qrcode](./img/qrcode.jpg)
