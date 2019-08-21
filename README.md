@@ -1,4 +1,4 @@
-http://lamyoung.com/cocos/2019/08/11/use-shell-in-cocos-creator/
+http://lamyoung.com/cocos-creator/2019/08/11/use-shell-in-cocos-creator/
 > 使用shell打包发布cocos-creator,包含简单的压图、混淆、版本备份。
 # 生产环境
 ```shell
