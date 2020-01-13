@@ -1,14 +1,9 @@
 const fs = require('fs');
 const path = require('path');
-// let rawdata = fs.readFileSync('test.json');
-// let student = JSON.parse(rawdata);
-// //console.log(student);
-
-// console.log(student instanceof Array)//true;
-// let type = student instanceof Array;
 
 const directoryPath = path.join(__dirname, '../../assets/Texture/static');
 const scenePath = path.join(__dirname, '../../assets/Scene');
+const prefabPath = path.join (__dirname, '../../assets/');
 console.log(scenePath);
 
 fs.readdir(directoryPath, function (err, files) {
@@ -18,15 +13,11 @@ fs.readdir(directoryPath, function (err, files) {
     } 
     
     files.forEach(function (file) {
-        // Do whatever you want to do with the file
         if(file.indexOf("meta") != -1) {
             let filePath = directoryPath +"/" + file;
             // 读取文件meta
             let rawdata = fs.readFileSync(filePath);
             let student = JSON.parse(rawdata);
-            //console.log(file); 
-            //console.log(student);
-            //get filename
             let olduuid = student.subMetas[getFileName(file)].uuid;
             let newuuid = createUUID();
             console.log(olduuid, newuuid);
@@ -38,47 +29,52 @@ fs.readdir(directoryPath, function (err, files) {
                 fs.writeFileSync(filePath, JSON.stringify(student),"utf8");
                 //去遍历场景文件
                 fs.readdir(scenePath, function (err, files) {
-    
                     if (err) {
                         return console.log('Unable to scan directory: ' + err);
                     } 
-
-                    files.forEach(function (file) {
-                        
-                        if(file.indexOf("meta") == -1) {
-                            let filePath = scenePath +"/" + file;
-                            //console.log(filePath);
-                            let rawdata = fs.readFileSync(filePath);
-                            let student = JSON.parse(rawdata);
-                            //console.log(student);
-                            for(var i = 0; i < student.length; i++) {
-                                if(null != student[i]["__type__"]  && student[i]["__type__"] == "cc.Sprite" )  {
-                                    var temp = student[i]["_spriteFrame"];
-                                    if(null != temp && olduuid == temp["__uuid__"]) {
-                                        temp["__uuid__"] = newuuid;
-                                        console.log("oldpath:" + olduuid);
-                                        console.log("newpath:" + temp["__uuid__"]);
-                                    }
-                                    
-                                    
-                                }
-                        
-                            }
-                            fs.truncate(filePath, 0, function(){
-                                fs.writeFileSync(filePath, JSON.stringify(student),"utf8");
-                                console.log('done')
-                            });
-                        }
-                       
-                    });
-
+                    //同步场景资源的更新
+                    syncSceneUUID(files, scenePath, olduuid, newuuid);
+                    //同步预制体的更新 
+                    syncPrefabUUID(file, prefabPath, olduuid, newuuid);
                 });
-                //去遍历library目录
+                
             });
         }
     });
 });
 
+
+ //同步场景资源的更新
+function syncSceneUUID (files, scenePath, olduuid, newuuid) {
+    files.forEach(function (file) {
+        if(file.indexOf("meta") == -1) {
+            let filePath = scenePath +"/" + file;
+            //console.log(filePath);
+            let rawdata = fs.readFileSync(filePath);
+            let student = JSON.parse(rawdata);
+            //console.log(student);
+            for(var i = 0; i < student.length; i++) {
+                if(null != student[i]["__type__"]  && student[i]["__type__"] == "cc.Sprite" )  {
+                    var temp = student[i]["_spriteFrame"];
+                    if(null != temp && olduuid == temp["__uuid__"]) {
+                        temp["__uuid__"] = newuuid;
+                        console.log("oldpath:" + olduuid);
+                        console.log("newpath:" + temp["__uuid__"]);
+                    } 
+                }
+            }
+            fs.truncate(filePath, 0, function(){
+                fs.writeFileSync(filePath, JSON.stringify(student),"utf8");
+                console.log('done')
+            });
+        }
+       
+    });
+}
+//同步预制体的更新 
+function syncPrefabUUID (files, prefabPath, olduuid, newuuid) {
+
+}
 
 //create uuid
 function createUUID() {
@@ -105,27 +101,6 @@ function getFileName (filename) {
     var retStr = filename.substr(0, tmp);
     return retStr;
 }
-
-
-// 按照路径划分 ： 
-//Textures, Scenes, Library
-
-//按照类型划分
-//image, scene
-
-//check wheter it is a array 
-// if(type) {
-//     var uuid = createUUID();
-//     console.log('uuid = ' + uuid);
-//     for(var i = 0; i < student.length; i++) {
-//         if(null != student[i]["__type__"]  && student[i]["__type__"] == "cc.Sprite" )  {
-//             var temp = student[i]["_spriteFrame"];
-//             console.log(temp["__uuid__"]);
-//         }
-
-//     }
-// }
-
 
 
 
