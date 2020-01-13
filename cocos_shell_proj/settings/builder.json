@@ -38,5 +38,11 @@
     "subContext": ""
   },
   "xxteaKey": "1366f66e-001b-49",
-  "zipCompressJs": true
+  "zipCompressJs": true,
+  "includeAnySDK": false,
+  "oauthLoginServer": "",
+  "appKey": "",
+  "appSecret": "",
+  "privateKey": "",
+  "jailbreakPlatform": false
 }
