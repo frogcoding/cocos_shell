@@ -8,7 +8,7 @@ const path = require('path');
 // let type = student instanceof Array;
 
 const directoryPath = path.join(__dirname, '../../assets/Texture/static');
-//const scenePath = path.join(__dirname, '../../assets/Scene');
+const scenePath = path.join(__dirname, '../../assets/Scene');
 console.log(scenePath);
 
 fs.readdir(directoryPath, function (err, files) {
@@ -20,23 +20,59 @@ fs.readdir(directoryPath, function (err, files) {
     files.forEach(function (file) {
         // Do whatever you want to do with the file
         if(file.indexOf("meta") != -1) {
-            var filePath = directoryPath +"/" + file;
+            let filePath = directoryPath +"/" + file;
             // 读取文件meta
             let rawdata = fs.readFileSync(filePath);
             let student = JSON.parse(rawdata);
             //console.log(file); 
             //console.log(student);
-            var olduuid = student["uuid"];
-            var newuuid = createUUID();
+            //get filename
+            let olduuid = student.subMetas[getFileName(file)].uuid;
+            let newuuid = createUUID();
             console.log(olduuid, newuuid);
             //修改meta文件id
-            student["uuid"] = newuuid;
+            student.subMetas[getFileName(file)].uuid = newuuid;
             fs.truncate(filePath, 0, function(){
                 console.log('done')
                 //写入修改后的内容
                 fs.writeFileSync(filePath, JSON.stringify(student),"utf8");
                 //去遍历场景文件
+                fs.readdir(scenePath, function (err, files) {
+    
+                    if (err) {
+                        return console.log('Unable to scan directory: ' + err);
+                    } 
 
+                    files.forEach(function (file) {
+                        
+                        if(file.indexOf("meta") == -1) {
+                            let filePath = scenePath +"/" + file;
+                            //console.log(filePath);
+                            let rawdata = fs.readFileSync(filePath);
+                            let student = JSON.parse(rawdata);
+                            //console.log(student);
+                            for(var i = 0; i < student.length; i++) {
+                                if(null != student[i]["__type__"]  && student[i]["__type__"] == "cc.Sprite" )  {
+                                    var temp = student[i]["_spriteFrame"];
+                                    if(null != temp && olduuid == temp["__uuid__"]) {
+                                        temp["__uuid__"] = newuuid;
+                                        console.log("oldpath:" + olduuid);
+                                        console.log("newpath:" + temp["__uuid__"]);
+                                    }
+                                    
+                                    
+                                }
+                        
+                            }
+                            fs.truncate(filePath, 0, function(){
+                                fs.writeFileSync(filePath, JSON.stringify(student),"utf8");
+                                console.log('done')
+                            });
+                        }
+                       
+                    });
+
+                });
                 //去遍历library目录
             });
         }
@@ -58,6 +94,16 @@ function createUUID() {
 
     var uuid = s.join("");
     return uuid;
+}
+
+function getFileName (filename) {
+    if(null == filename) {
+        console.error("filename is null");
+        return null;
+    }
+    var tmp = filename.indexOf(".");
+    var retStr = filename.substr(0, tmp);
+    return retStr;
 }
 
 
