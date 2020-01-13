@@ -18,6 +18,8 @@ fs.readdir(directoryPath, function (err, files) {
             // 读取文件meta
             let rawdata = fs.readFileSync(filePath);
             let student = JSON.parse(rawdata);
+            if(null == student.subMetas[getFileName(file)])
+                continue;
             let olduuid = student.subMetas[getFileName(file)].uuid;
             let newuuid = createUUID();
             console.log(olduuid, newuuid);
